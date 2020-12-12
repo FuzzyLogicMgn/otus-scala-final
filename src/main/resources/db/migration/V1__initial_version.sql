@@ -43,3 +43,10 @@ create table tran (
 	FOREIGN KEY (account_id) REFERENCES account (id),
 	FOREIGN KEY (currency) REFERENCES currency (code)
 );
+
+create table akka_offset_store (
+  name VARCHAR(255) NOT NULL,
+  current_offset BIGINT NOT NULL,
+  last_updated timestamp with time zone default now(),
+  PRIMARY KEY (name)
+);

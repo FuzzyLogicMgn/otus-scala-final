@@ -41,7 +41,7 @@ class EventStreamServiceImpl(implicit system: ActorSystem[_]) extends EventStrea
           )
         case AccountEntity.AccountDeleted(accountId) =>
           EventReply.Events.AccountDeleted(grpc.AccountDeleted(accountId))
-      })
+      }, eventEnvelope.offset.asInstanceOf[Sequence].value)
     )
   }
 
