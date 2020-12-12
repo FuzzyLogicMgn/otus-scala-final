@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ru.otus.sc.accounting.grpc";
+option java_outer_classname = "AccountingProto";
+
+package accounting;
+
+service EventStreamService {
+    rpc ReadAccountingEventsStream (OffsetRequest) returns (stream EventReply) {}
+}
+
+message OffsetRequest {
+    int32 offset = 1;
+}
+
+message EventReply {
+    oneof events {
+        ClientCreated clientCreated = 1;
+        ClientUpdated clientUpdated = 2;
+        ClientDeleted clientDeleted = 3;
+        AccountCreated accountCreated = 4;
+        Transaction transaction = 5;
+        AccountDeleted accountDeleted = 6;
+    }
+}
+
+message ClientCreated {
+    string clientId = 1;
+    string name = 2;
+}
+
+message ClientUpdated {
+    string clientId = 1;
+    string name = 2;
+}
+
+message ClientDeleted {
+    string clientId = 1;
+}
+
+message AccountCreated {
+    string accountId = 1;
+    string clientId = 2;
+    double balance = 3;
+    string currency = 4;
+    string organization = 5;
+}
+
+message Transaction {
+    string accountId = 1;
+    double value = 3;
+    string currency = 4;
+}
+
+message AccountDeleted {
+    string accountId = 1;
+}
