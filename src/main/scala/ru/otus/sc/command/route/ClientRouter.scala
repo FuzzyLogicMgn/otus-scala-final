@@ -4,10 +4,10 @@ import java.util.UUID
 
 import akka.http.scaladsl.server.Directives.concat
 import akka.http.scaladsl.server.Route
-import ru.otus.sc.command.json.AppTapir._
-import ru.otus.sc.command.json.EntityJsonProtocol._
 import ru.otus.sc.command.model._
 import ru.otus.sc.command.service.ClientService
+import ru.otus.sc.common.json.AppTapir._
+import ru.otus.sc.common.json.EntityJsonProtocol._
 import ru.otus.sc.common.model.Client
 import ru.otus.sc.common.route.BaseRouter
 

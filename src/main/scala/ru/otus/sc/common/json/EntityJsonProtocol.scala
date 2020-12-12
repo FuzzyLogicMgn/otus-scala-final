@@ -1,4 +1,4 @@
-package ru.otus.sc.command.json
+package ru.otus.sc.common.json
 
 import play.api.libs.json.{Json, OFormat}
 import ru.otus.sc.common.model.{Account, Amount, Client, Transaction}

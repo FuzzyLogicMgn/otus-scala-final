@@ -12,9 +12,8 @@ import akka.persistence.journal.PersistencePluginProxyExtension
 import com.typesafe.config.{Config, ConfigFactory}
 import ru.otus.sc.accounting.grpc.EventStreamServiceHandler
 import ru.otus.sc.command.entity.{AccountEntity, ClientEntity, ExchangeServiceEntity}
-import ru.otus.sc.command.route.{AccountRouter, ClientRouter, DocRouter}
+import ru.otus.sc.command.route.{AccountRouter, AppRouter, ClientRouter, DocRouter}
 import ru.otus.sc.command.service.impl.{AccountServiceImpl, ClientServiceImpl, EventStreamServiceImpl}
-import ru.otus.sc.common.route.AppRouter
 
 import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future}

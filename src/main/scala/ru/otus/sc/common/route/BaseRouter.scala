@@ -1,7 +1,7 @@
 package ru.otus.sc.common.route
 
 import akka.http.scaladsl.server.Route
-import ru.otus.sc.command.json.AppTapir._
+import ru.otus.sc.common.json.AppTapir._
 
 trait BaseRouter {
   def route: Route

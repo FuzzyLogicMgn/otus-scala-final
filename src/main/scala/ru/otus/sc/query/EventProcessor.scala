@@ -3,7 +3,7 @@ package ru.otus.sc.query
 import java.util.UUID
 
 import akka.Done
-import akka.actor.ActorSystem
+import akka.actor.typed.ActorSystem
 import org.slf4j.LoggerFactory
 import ru.otus.sc.accounting.grpc.{EventReply, EventStreamService, OffsetRequest}
 import ru.otus.sc.common.model._
@@ -18,7 +18,7 @@ class EventProcessor(
     clientDao: ClientDao,
     accountDao: AccountDao,
     tranDao: TransactionDao
-)(implicit system: ActorSystem, executionContext: ExecutionContext) {
+)(implicit system: ActorSystem[_], executionContext: ExecutionContext) {
 
   private val offsetStoreKey      = "AccountingEventOffset"
   private val processEventTimeout = 5.second

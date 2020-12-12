@@ -1,8 +1,9 @@
-package ru.otus.sc.common.route
+package ru.otus.sc.command.route
+
 import akka.http.scaladsl.model.{HttpRequest, HttpResponse}
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
-import ru.otus.sc.command.route.{AccountRouter, ClientRouter, DocRouter}
+import ru.otus.sc.common.route.BaseRouter
 import sttp.tapir.Endpoint
 
 import scala.concurrent.Future
