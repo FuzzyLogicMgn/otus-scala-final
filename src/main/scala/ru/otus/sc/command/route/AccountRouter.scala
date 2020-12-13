@@ -28,7 +28,7 @@ class AccountRouter(accountService: AccountService)(implicit ec: ExecutionContex
     .description("JSON with client description")
     .errorOut(stringBody)
     .out(anyJsonBody[Account])
-    .description("Returns created account")
+    .description("Создать новый счёт для переданного клиета")
 
   private val getAccountEndpoint: Endpoint[UUID, String, Account, Any] = baseEndpoint
     .in("account")
@@ -37,7 +37,7 @@ class AccountRouter(accountService: AccountService)(implicit ec: ExecutionContex
     .description("Account identifier (UUID)")
     .errorOut(stringBody)
     .out(anyJsonBody[Account])
-    .description("Returns account")
+    .description("Прочитать счет по UUID")
 
   private val postTransactionEndpoint: Endpoint[(UUID, Amount), ErrorInfo, Account, Any] =
     baseEndpoint
@@ -55,7 +55,7 @@ class AccountRouter(accountService: AccountService)(implicit ec: ExecutionContex
         )
       )
       .out(anyJsonBody[Account])
-      .description("Returns created transaction")
+      .description("Создать транзакцию по счету")
 
   private val deleteAccountEndpoint: Endpoint[UUID, String, Account, Any] = baseEndpoint
     .in("account")
@@ -64,7 +64,7 @@ class AccountRouter(accountService: AccountService)(implicit ec: ExecutionContex
     .description("Account identifier (UUID)")
     .errorOut(stringBody)
     .out(anyJsonBody[Account])
-    .description("Returns deleted account")
+    .description("Удалить счет по UUID")
 
   private def createAccount(client: Client): Future[Either[String, Account]] =
     client.id

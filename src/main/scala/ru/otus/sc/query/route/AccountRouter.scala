@@ -26,7 +26,7 @@ class AccountRouter(accountService: AccountService)(implicit ec: ExecutionContex
     .description("Account identifier (UUID)")
     .errorOut(stringBody)
     .out(anyJsonBody[Account])
-    .description("Returns account")
+    .description("Прочитать данные по счету по UUID")
 
 
   private val findAccountEndpoint: Endpoint[(UUID, Option[Int], Option[Int]), String, Seq[Account], Any] = baseEndpoint
@@ -37,7 +37,7 @@ class AccountRouter(accountService: AccountService)(implicit ec: ExecutionContex
     .in(query[Option[Int]]("maxBalance"))
     .errorOut(stringBody)
     .out(anyJsonBody[Seq[Account]])
-    .description("Returns accounts")
+    .description("Вернуть список счетов данного клиента с балансом больше minBalance, но меньше maxBalance")
 
 
   private def getAccount(accountId: UUID): Future[Either[String, Account]] =

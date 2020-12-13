@@ -24,7 +24,7 @@ class ClientRouter(clientService: ClientService)(implicit ec: ExecutionContext) 
     .description("JSON with client description")
     .errorOut(stringBody)
     .out(anyJsonBody[Client])
-    .description("Returns created client")
+    .description("Создать нового клиента")
 
   private val getClientEndpoint: Endpoint[UUID, String, Client, Any] = baseEndpoint
     .in("client")
@@ -33,7 +33,7 @@ class ClientRouter(clientService: ClientService)(implicit ec: ExecutionContext) 
     .description("Client identifier (UUID)")
     .errorOut(stringBody)
     .out(anyJsonBody[Client])
-    .description("Returns client")
+    .description("Прочитать данные клиента по UUID")
 
   private val updateClientEndpoint: Endpoint[Client, String, Client, Any] = baseEndpoint
     .in("client")
@@ -42,7 +42,7 @@ class ClientRouter(clientService: ClientService)(implicit ec: ExecutionContext) 
     .description("Client data")
     .errorOut(stringBody)
     .out(anyJsonBody[Client])
-    .description("Updated client")
+    .description("Обновить данные о клиенте")
 
   private val deleteClientEndpoint: Endpoint[UUID, String, Client, Any] = baseEndpoint
     .in("client")
@@ -51,7 +51,7 @@ class ClientRouter(clientService: ClientService)(implicit ec: ExecutionContext) 
     .description("Client identifier (UUID)")
     .errorOut(stringBody)
     .out(anyJsonBody[Client])
-    .description("Deleted client")
+    .description("Удалить клиента по UUID")
 
   private def createClient(client: Client): Future[Either[String, Client]] = {
     clientService.create(ClientCreateRequest(client)) map { response =>
